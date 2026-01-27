@@ -11,7 +11,7 @@ struct Piece {
 }
 
 fn init_board() -> Vec<[Piece; 8]>{
-    let mut board = vec![[Piece{cords: [0, 0]}; 8]; 8];
+    let mut board: Vec<[Piece; 8]> = vec![[Piece{cords: [0, 0]}; 8]; 8];
 
     for i in 0..8 {
         for j in 0..8 {
@@ -22,6 +22,6 @@ fn init_board() -> Vec<[Piece; 8]>{
 }
 
 fn main() {
-    let mut board = init_board();
+    let board: Vec<[Piece; 8]> = init_board();
     println!("{:?}", board);
 }
