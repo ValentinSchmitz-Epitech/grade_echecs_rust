@@ -16,7 +16,7 @@ fn check_move() -> bool {
     return true;
 }
 
-fn mv_pawn(piece: Piece, mut board: [[Piece; 8]; 8], new_cords: [usize; 2]) -> bool {
+fn mv_pawn(piece: Piece, board: &mut [[Piece; 8]; 8], new_cords: [usize; 2]) -> bool {
     if check_move() != true {
         return false;
     }
@@ -29,12 +29,11 @@ fn mv_pawn(piece: Piece, mut board: [[Piece; 8]; 8], new_cords: [usize; 2]) -> b
 }
 
 fn main() {
-    let board: [[Piece; 8]; 8] = init_board();
+    let mut board: [[Piece; 8]; 8] = init_board();
 
     disp_board(board);
-    print!("\n\n");
-    if mv_pawn(board[1][5], board, [2, 5]) == true {
-        print!("moved!\n");
+    if mv_pawn(board[1][5], &mut board, [2, 5]) == true {
+        print!("\nmoved!\n\n");
+        disp_board(board);
     }
-    disp_board(board);
 }
