@@ -15,4 +15,14 @@ use crate::move_pieces::mv_pawn;
 
 fn main() {
     let mut board: [[Piece; 8]; 8] = init_board();
+
+    disp_board(board);
+    if mv_pawn(board[1][3], &mut board, [3, 3]) == true {
+        print!("\nmoved!\n\n");
+        disp_board(board);
+    }
+    if mv_pawn(board[3][3], &mut board, [4, 3]) == true {
+        print!("\nmoved!\n\n");
+        disp_board(board);
+    }
 }
