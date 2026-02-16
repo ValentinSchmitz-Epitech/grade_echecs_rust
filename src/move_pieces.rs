@@ -22,10 +22,11 @@ fn check_move_pawn(piece: Piece, board: [[Piece; 8]; 8], new_cords: [usize; 2]) 
             return true;
         }
         if board[new_cords[0]][new_cords[1]].type_p == Type::None &&
-            (delta_cords == [1, 0] || (delta_cords == [2, 0] && !piece.moved)) {
+            (delta_cords == [1, 0] ||
+            (delta_cords == [2, 0] && !piece.moved &&
+            board[new_cords[0] - 1][new_cords[1]].type_p == Type::None)) {
             return true;
         }
-        return false;
     }
     if (piece.type_p == Type::Bpawn) && (mv_pos_b.contains(&delta_cords)) {
         if board[new_cords[0]][new_cords[1]].type_p != Type::None &&
@@ -33,7 +34,9 @@ fn check_move_pawn(piece: Piece, board: [[Piece; 8]; 8], new_cords: [usize; 2]) 
             return true;
         }
         if board[new_cords[0]][new_cords[1]].type_p == Type::None &&
-            (delta_cords == [-1, 0] || (delta_cords == [-2, 0] && !piece.moved)) {
+            (delta_cords == [-1, 0] ||
+            (delta_cords == [-2, 0] && !piece.moved &&
+            board[new_cords[0] + 1][new_cords[1]].type_p == Type::None)) {
             return true;
         }
         return false;
