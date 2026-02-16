@@ -5,7 +5,7 @@ mod init_board;
 use crate::init_board::init_board;
 
 mod move_pieces;
-use crate::move_pieces::{mv_bishop, mv_knight, mv_rook, mv_pawn};
+use crate::move_pieces::{mv_king, mv_queen, mv_bishop, mv_knight, mv_rook, mv_pawn};
 
 use ggez::event;
 use ggez::graphics::{Canvas, Color, DrawParam, Image};
@@ -132,6 +132,8 @@ impl event::EventHandler<Context> for GameState {
                 let _ = mv_rook(piece, &mut self.board, to);
                 let _ = mv_knight(piece, &mut self.board, to);
                 let _ = mv_bishop(piece, &mut self.board, to);
+                let _ = mv_queen(piece, &mut self.board, to);
+                let _ = mv_king(piece, &mut self.board, to);
             }
             self.selected = None;
         }
