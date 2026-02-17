@@ -13,7 +13,7 @@ use ggez::input::mouse::MouseButton;
 use ggez::mint::Point2;
 use ggez::{Context, ContextBuilder};
 
-const TILE_SIZE: f32 = 105.0;
+const TILE_SIZE: f32 = 105.5;
 
 struct GameState {
     board: [[Piece; 8]; 8],
