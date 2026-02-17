@@ -28,8 +28,8 @@ pub fn init_board() -> [[Piece; 8]; 8] {
     board[7][0].type_p = Type::Brook;
     board[7][7].type_p = Type::Brook;
     board[7][6].type_p = Type::Bknight;
-    board[7][2].type_p = Type::Bknight;
-    board[7][1].type_p = Type::Bbishop;
+    board[7][1].type_p = Type::Bknight;
+    board[7][2].type_p = Type::Bbishop;
     board[7][5].type_p = Type::Bbishop;
     board[7][4].type_p = Type::Bqueen;
     board[7][3].type_p = Type::Bking;
