@@ -13,7 +13,7 @@ use ggez::input::mouse::MouseButton;
 use ggez::mint::Point2;
 use ggez::{Context, ContextBuilder};
 
-const TILE_SIZE: f32 = 105.0;
+const TILE_SIZE: f32 = 105.5;
 
 struct GameState {
     board: [[Piece; 8]; 8],
@@ -124,9 +124,7 @@ impl event::EventHandler<Context> for GameState {
         y: f32,
     ) -> Result<(), Context> {
         if button == MouseButton::Left {
-            if let (Some(from), Some(to)) =
-                (self.selected, GameState::screen_to_board(x, y))
-            {
+            if let (Some(from), Some(to)) = (self.selected, GameState::screen_to_board(x, y)) {
                 let piece = self.board[from[0]][from[1]];
                 let _ = mv_pawn(piece, &mut self.board, to);
             }
@@ -137,7 +135,7 @@ impl event::EventHandler<Context> for GameState {
 }
 
 pub fn main() {
-    let (mut ctx, event_loop) = ContextBuilder::new("echecs", "toi")
+    let (mut ctx, event_loop) = ContextBuilder::new("echecs", "moi")
         .add_resource_path("./sprites")
         .window_setup(ggez::conf::WindowSetup::default().title("Grade Échecs Rust"))
         .window_mode(
