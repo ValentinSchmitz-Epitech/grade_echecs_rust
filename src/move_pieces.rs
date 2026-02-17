@@ -18,10 +18,10 @@ fn check_move_pawn(piece: Piece, board: [[Piece; 8]; 8], new_cords: [usize; 2]) 
     }
 
     let target = board[new_cords[0]][new_cords[1]].type_p;
-    if piece.type_p == Type::Wpawn && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking) {
+    if piece.type_p == Type::Wpawn && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking | Type::Bking) {
         return false;
     }
-    if piece.type_p == Type::Bpawn && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Bking) {
+    if piece.type_p == Type::Bpawn && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Wking | Type::Bking) {
         return false;
     }
     if (piece.type_p == Type::Wpawn) && (mv_pos_w.contains(&delta_cords)) {
@@ -98,10 +98,10 @@ fn check_move_rook(piece: Piece, board: [[Piece; 8]; 8], new_cords: [usize; 2]) 
             check_y += step_y;
         }
         let target = board[new_cords[0]][new_cords[1]].type_p;
-        if piece.type_p == Type::Wrook && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking) {
+        if piece.type_p == Type::Wrook && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking | Type::Bking) {
             return false;
         }
-        if piece.type_p == Type::Brook && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Bking) {
+        if piece.type_p == Type::Brook && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Wking | Type::Bking) {
             return false;
         }
         
@@ -141,10 +141,10 @@ fn check_move_knight(piece: Piece, board: [[Piece; 8]; 8], new_cords: [usize; 2]
             return false;
         }
         let target = board[new_cords[0]][new_cords[1]].type_p;
-        if piece.type_p == Type::Wknight && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking) {
+        if piece.type_p == Type::Wknight && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking | Type::Bking) {
             return false;
         }
-        if piece.type_p == Type::Bknight && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Bking) {
+        if piece.type_p == Type::Bknight && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Wking | Type::Bking) {
             return false;
         }
         return true;
@@ -195,10 +195,10 @@ fn check_move_bishop(piece: Piece, board: [[Piece; 8]; 8], new_cords: [usize; 2]
             check_y += step_y;
         }
         let target = board[new_cords[0]][new_cords[1]].type_p;
-        if piece.type_p == Type::Wbishop && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking) {
+        if piece.type_p == Type::Wbishop && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking | Type::Bking) {
             return false;
         }
-        if piece.type_p == Type::Bbishop && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Bking) {
+        if piece.type_p == Type::Bbishop && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Wking | Type::Bking) {
             return false;
         }
         return true;
@@ -254,10 +254,10 @@ fn check_move_queen(piece: Piece, board: [[Piece; 8]; 8], new_cords: [usize; 2])
             check_y += step_y;
         }
         let target = board[new_cords[0]][new_cords[1]].type_p;
-        if piece.type_p == Type::Wqueen && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking) {
+        if piece.type_p == Type::Wqueen && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking | Type::Bking) {
             return false;
         }
-        if piece.type_p == Type::Bqueen && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Bking) {
+        if piece.type_p == Type::Bqueen && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Wking | Type::Bking) {
             return false;
         }
         
@@ -296,10 +296,10 @@ fn check_move_king(piece: Piece, board: [[Piece; 8]; 8], new_cords: [usize; 2]) 
     }
     if piece.type_p == Type::Wking || piece.type_p == Type::Bking {
         let target = board[new_cords[0]][new_cords[1]].type_p;
-        if piece.type_p == Type::Wking && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking) {
+        if piece.type_p == Type::Wking && matches!(target, Type::Wpawn | Type::Wrook | Type::Wknight | Type::Wbishop | Type::Wqueen | Type::Wking | Type::Bking) {
             return false;
         }
-        if piece.type_p == Type::Bking && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Bking) {
+        if piece.type_p == Type::Bking && matches!(target, Type::Bpawn | Type::Brook | Type::Bknight | Type::Bbishop | Type::Bqueen | Type::Wking | Type::Bking) {
             return false;
         }
         
